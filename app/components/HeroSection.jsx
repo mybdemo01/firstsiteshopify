@@ -1,4 +1,5 @@
 import {Image} from '@shopify/hydrogen';
+import {Link} from '@remix-run/react';
 import {motion} from 'framer-motion';
 
 export function HeroSection({featuredProduct}) {
@@ -15,7 +16,7 @@ export function HeroSection({featuredProduct}) {
             initial={{opacity: 0, y: 20}}
             animate={{opacity: 1, y: 0}}
             transition={{delay: 0.2, duration: 0.8}}
-            className="mb-4 text-5xl font-bold md:text-7xl"
+            className="mb-4 text-4xl font-bold md:text-7xl"
           >
             Step Into Style
           </motion.h1>
@@ -23,24 +24,26 @@ export function HeroSection({featuredProduct}) {
             initial={{opacity: 0, y: 20}}
             animate={{opacity: 1, y: 0}}
             transition={{delay: 0.4, duration: 0.8}}
-            className="mb-8 text-xl md:text-2xl"
+            className="mb-8 text-lg md:text-2xl"
           >
             Discover our latest collection of premium footwear
           </motion.p>
-          <motion.button
+          <motion.div
             initial={{opacity: 0, y: 20}}
             animate={{opacity: 1, y: 0}}
             transition={{delay: 0.6, duration: 0.8}}
-            whileHover={{scale: 1.05}}
-            whileTap={{scale: 0.95}}
-            className="rounded-full bg-white px-8 py-3 text-lg font-semibold text-black transition-all hover:bg-gray-100"
           >
-            Shop Now
-          </motion.button>
+            <Link
+              to="/collections/all"
+              className="inline-block rounded-full bg-white px-8 py-3 text-lg font-semibold text-black transition-all hover:bg-gray-100"
+            >
+              Shop Now
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
       
-      {featuredProduct?.image && (
+      {featuredProduct?.images?.nodes?.[0] ? (
         <motion.div
           initial={{scale: 1.2, opacity: 0}}
           animate={{scale: 1, opacity: 0.3}}
@@ -48,11 +51,13 @@ export function HeroSection({featuredProduct}) {
           className="absolute inset-0"
         >
           <Image
-            data={featuredProduct.image}
+            data={featuredProduct.images.nodes[0]}
             className="h-full w-full object-cover"
             sizes="100vw"
           />
         </motion.div>
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
       )}
     </div>
   );

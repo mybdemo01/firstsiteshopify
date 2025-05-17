@@ -1261,7 +1261,7 @@ interface GeneratedQueryTypes {
     return: CatalogQuery;
     variables: CatalogQueryVariables;
   };
-  '#graphql\n  query Products {\n    products(first: 8) {\n      nodes {\n        id\n        title\n        handle\n        images(first: 1) {\n          nodes {\n            id\n            url\n            altText\n            width\n            height\n          }\n        }\n        variants(first: 1) {\n          nodes {\n            id\n            priceV2 {\n              amount\n              currencyCode\n            }\n            compareAtPriceV2 {\n              amount\n              currencyCode\n            }\n          }\n        }\n      }\n    }\n  }\n': {
+  '#graphql\n  query Products {\n    products(first: 8, sortKey: CREATED_AT, reverse: true) {\n      nodes {\n        id\n        title\n        handle\n        images(first: 1) {\n          nodes {\n            id\n            url\n            altText\n            width\n            height\n          }\n        }\n        variants(first: 1) {\n          nodes {\n            id\n            priceV2 {\n              amount\n              currencyCode\n            }\n            compareAtPriceV2 {\n              amount\n              currencyCode\n            }\n          }\n        }\n      }\n    }\n  }\n': {
     return: ProductsQuery;
     variables: ProductsQueryVariables;
   };
